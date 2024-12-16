@@ -1,10 +1,23 @@
 def main():
-    with open("books/frankenstein.txt") as f:
+    path = "books/frankenstein.txt"
+    book_string = read_books(path)
+    words = count_words(book_string)
+    chars = count_characters(book_string)
     report = print_report(chars)
-        file_contents = f.read()
-        words = file_contents.split()
 
-        count_characters(file_contents)
+        
+
+def read_books(path):
+    with open(path) as f:
+        file_contents = f.read()
+        return file_contents
+
+
+def count_words(string):
+    words = string.split()
+    return len(words)
+
+
 
 def count_characters(characters):
     chars_dict = {}
@@ -16,7 +29,7 @@ def count_characters(characters):
         else:
             chars_dict[char] += 1
 
-    print(chars_dict)
+    return chars_dict
 
 def print_report(words_dict):
     chars_list = []
